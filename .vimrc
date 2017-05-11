@@ -78,7 +78,7 @@ nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 nnoremap <Tab><Space> :setlocal expandtab<CR>
 nnoremap <Tab><Tab> :setlocal noexpandtab<CR>
 nnoremap <Tab>2 :setlocal ts=4 sw=2 sts=2<CR>
-nnoremap <Tab>4 :setlocal ts=4 sw=4 sts=0<CR>
+nnoremap <Tab>4 :setlocal ts=4 sw=4 sts=4<CR>
 
 " buffer shortcut
 nnoremap <silent> <Space>w :b#<CR>
