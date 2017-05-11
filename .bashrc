@@ -3,14 +3,22 @@
 #
 
 # Prompt
-if [ "$(uname)" == "Darwin" ]; then
-  export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\n\[\033[33m\] ✘╹◡╹✘\[\033[0m\] < "
-fi
+case "$OSTYPE" in
+  darwin*)
+    export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\n\[\033[33m\] ✘╹◡╹✘\[\033[0m\] < "
+    alias ls='ls -FG'
+    ;;
+  linux*)
+    alias ls='ls -hF --color=auto'
+    ;;
+  cygwin)
+    alias ls='ls -hF --color=auto'
+    ;;
+esac
 
 # Aliases
-alias ls='ls -G'
-alias ll='ls -AlG'
-alias la='ls -AG'
+alias ll='ls -Al'
+alias la='ls -A'
 alias ..='cd ..'
 alias rmdir='rm -rf'
 
