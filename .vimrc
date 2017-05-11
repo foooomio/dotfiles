@@ -53,8 +53,8 @@ if has('kaoriya')
 endif
 
 set tabstop=4
-set shiftwidth=4
-set softtabstop=0
+set shiftwidth=2
+set softtabstop=2
 set backspace=indent,eol,start
 set expandtab
 set autoindent
