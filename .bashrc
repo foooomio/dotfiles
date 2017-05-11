@@ -2,19 +2,20 @@
 # ~/.bashrc
 #
 
-# Prompt
 case "$OSTYPE" in
   darwin*)
-    export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\n\[\033[33m\] ✘╹◡╹✘\[\033[0m\] < "
+    ps=' \[\033[33m\]✘╹◡╹✘\[\033[0m\] <'
     alias ls='ls -FG'
     ;;
-  linux*)
-    alias ls='ls -hF --color=auto'
-    ;;
-  cygwin)
+  linux*|cygwin)
+    ps='$'
     alias ls='ls -hF --color=auto'
     ;;
 esac
+
+# Prompt
+! type -t __git_ps1 >/dev/null && [ -f ~/bin/git-prompt.sh ] && . ~/bin/git-prompt.sh
+export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\[\033[0m\]\n$ps "
 
 # Aliases
 alias ll='ls -Al'
