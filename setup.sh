@@ -31,8 +31,8 @@ __deploy_dotfiles() {
 __uninstall() {
   local FILE
   for FILE in "${DOTFILES[@]}"; do
-    [ -L "${HOME}/${FILE}"  ] && unlink "${HOME}/${FILE}"
-    if [ -f "${BACKUPDIR}/${FILE}" -a ! -L "${HOME}/${FILE}" ]; then
+    test -L "${HOME}/${FILE}" && unlink "${HOME}/${FILE}"
+    if [ -f "${BACKUPDIR}/${FILE}" ]; then
       cp -f "${BACKUPDIR}/${FILE}" "${HOME}/${FILE}"
     fi
   done
