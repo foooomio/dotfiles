@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+stty stop undef
+stty start undef
+
 case "$OSTYPE" in
   darwin*)
     ps=' \[\033[33m\]✘╹◡╹✘\[\033[0m\] <'
@@ -14,7 +17,7 @@ case "$OSTYPE" in
 esac
 
 # Prompt
-! type -t __git_ps1 >/dev/null && [ -f ~/bin/git-prompt.sh ] && . ~/bin/git-prompt.sh
+! type -t __git_ps1 >/dev/null && test -f ~/bin/git-prompt.sh && . ~/bin/git-prompt.sh
 export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\[\033[0m\]\n$ps "
 
 # Aliases
