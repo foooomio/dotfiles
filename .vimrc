@@ -27,6 +27,7 @@ if version > 703 && isdirectory(s:dein_dir)
   let g:buftabline_numbers = 2
   let g:NERDTreeShowHidden = 1
   let g:NERDTreeQuitOnOpen = 1
+  let g:lexima_enable_basic_rules = 0
 endif
 
 " settings
