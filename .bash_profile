@@ -6,18 +6,18 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-# anyenv
-if [ -d ~/.anyenv ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init - --no-rehash)"
-fi
-
 # Path
 PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH" # basic
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
 PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"  # MacVim
 PATH="/usr/local/heroku/bin:$PATH"                    # heroku
 export PATH
+
+# anyenv
+if [ -d ~/.anyenv ]; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init - --no-rehash)"
+fi
 
 # History
 shopt -s histappend
