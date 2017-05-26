@@ -12,6 +12,7 @@ DOTFILES=(
   .gitconfig
   .inputrc
   .vimrc
+  .Xmodmap
 )
 
 __deploy_dotfiles() {
