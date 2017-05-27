@@ -15,6 +15,7 @@ if version > 703 && isdirectory(s:dein_dir)
     call dein#add('ap/vim-buftabline')
     call dein#add('cohama/lexima.vim')
     call dein#add('scrooloose/nerdtree')
+    call dein#add('itchyny/vim-cursorword')
     call dein#add('neovimhaskell/haskell-vim')
     call dein#add('derekwyatt/vim-scala')
     call dein#end()
@@ -65,6 +66,10 @@ set hlsearch
 set incsearch
 set showmatch
 set matchtime=1
+colorscheme default
+highlight Search ctermfg=0
+highlight Visual ctermbg=4
+highlight MatchParen cterm=underline ctermbg=NONE
 
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,latin1
