@@ -116,6 +116,13 @@ nnoremap <silent> <C-a> ^
 nnoremap <silent> <C-e> $
 inoremap <silent> <C-a> <ESC>^i
 inoremap <silent> <C-e> <ESC>$a
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
 
 augroup reload_vimrc
   autocmd!
