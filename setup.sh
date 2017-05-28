@@ -43,6 +43,8 @@ __install_homebrew() {
   echo 'Before installing Homebrew, execute `xcode-select --install`'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   cat "${BASEDIR}/brewlist" | xargs brew install
+  sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
+  chsh -s /usr/local/bin/bash
 }
 
 __install_dein() {

@@ -2,6 +2,10 @@
 # ~/.inputrc
 #
 set completion-ignore-case on
+set colored-stats on
+set visible-stats on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
 
 "\C-n": history-search-forward
 "\C-p": history-search-backward
