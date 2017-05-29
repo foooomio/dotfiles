@@ -5,6 +5,8 @@
 stty stop undef
 stty start undef
 
+export EDITOR=vim
+
 case "$OSTYPE" in
   darwin*)
     ps=' \[\033[33m\]✘╹◡╹✘\[\033[0m\] <'
