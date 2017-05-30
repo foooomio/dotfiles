@@ -133,3 +133,4 @@ augroup reload_vimrc
 augroup END
 
 command! Hitest source $VIMRUNTIME/syntax/hitest.vim
+nnoremap <Space>h :call CurrentSyntax()<CR>
