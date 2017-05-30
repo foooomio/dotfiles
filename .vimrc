@@ -2,14 +2,12 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " plugin
-if &compatible
-  set nocompatible
-endif
-let s:dein_dir = expand('~/.cache/dein')
-if version > 703 && isdirectory(s:dein_dir)
-  let &runtimepath = &runtimepath . ',' . s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-  if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+if &compatible | set nocompatible | endif
+let $DEIN = $HOME . '/.cache/dein'
+if version > 704 && isdirectory($DEIN)
+  set runtimepath+=$DEIN/repos/github.com/Shougo/dein.vim
+  if dein#load_state($DEIN)
+    call dein#begin($DEIN)
     call dein#add('Shougo/dein.vim')
     call dein#add('embear/vim-localvimrc')
     call dein#add('ap/vim-buftabline')
@@ -18,7 +16,8 @@ if version > 703 && isdirectory(s:dein_dir)
     call dein#add('itchyny/vim-cursorword')
     call dein#add('neovimhaskell/haskell-vim')
     call dein#add('derekwyatt/vim-scala')
-    call dein#add('sickill/vim-monokai')
+    call dein#add('foooomio/vim-colors-japanesque')
+    call dein#add('foooomio/vim-current-syntax')
     call dein#end()
     call dein#save_state()
   endif
@@ -30,9 +29,12 @@ if version > 703 && isdirectory(s:dein_dir)
   let g:NERDTreeShowHidden = 1
   let g:NERDTreeQuitOnOpen = 1
   let g:lexima_enable_basic_rules = 0
+endif
+
+if has('termguicolors')
   set termguicolors
   set background=dark
-  colorscheme monokai
+  colorscheme japanesque
 else
   colorscheme default
   highlight Search ctermfg=0
@@ -129,3 +131,5 @@ augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+command! Hitest source $VIMRUNTIME/syntax/hitest.vim
