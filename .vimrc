@@ -58,10 +58,10 @@ set noswapfile
 set nobackup
 set backupskip+=/private/tmp/crontab.*
 set noundofile
-set mouse&
-set formatoptions&
+set mouse=
+set formatoptions=
 if has('kaoriya')
-  autocmd FileType * setlocal formatoptions&
+  autocmd FileType * setlocal formatoptions=
 endif
 
 set tabstop=4
