@@ -56,6 +56,7 @@ set list
 set listchars=tab:>\ ,trail:-
 set noswapfile
 set nobackup
+set backupskip+=/private/tmp/crontab.*
 set noundofile
 set mouse&
 set formatoptions&
