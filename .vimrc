@@ -31,15 +31,17 @@ if version > 704 && isdirectory($DEIN)
   let g:lexima_enable_basic_rules = 0
 endif
 
+augroup MyColors | autocmd! | augroup END
+
 if has('termguicolors')
   set termguicolors
   set background=dark
   colorscheme japanesque
 else
   colorscheme default
-  highlight Search ctermfg=0
-  highlight Visual ctermbg=4
-  highlight MatchParen cterm=underline ctermbg=NONE
+  autocmd MyColors ColorScheme * highlight Search ctermfg=0
+  autocmd MyColors ColorScheme * highlight Visual ctermbg=4
+  autocmd MyColors ColorScheme * highlight MatchParen cterm=underline ctermbg=NONE
 endif
 
 " settings
