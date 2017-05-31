@@ -119,6 +119,8 @@ noremap <silent> gj j
 noremap <silent> gk k
 nnoremap <silent> <C-a> ^
 nnoremap <silent> <C-e> $
+vnoremap <silent> <C-a> ^
+vnoremap <silent> <C-e> $
 inoremap <silent> <C-a> <ESC>^i
 inoremap <silent> <C-e> <ESC>$a
 cnoremap <C-a> <Home>
