@@ -118,17 +118,28 @@ noremap <silent> j gj
 noremap <silent> k gk
 noremap <silent> gj j
 noremap <silent> gk k
-nnoremap <silent> <C-a> ^
-nnoremap <silent> <C-e> $
-vnoremap <silent> <C-a> ^
-vnoremap <silent> <C-e> $
-inoremap <silent> <C-a> <ESC>^i
-inoremap <silent> <C-e> <ESC>$a
+
+" emacs-style editing
+noremap <C-a> ^
+"noremap <C-b> <Left>
+"noremap <C-d> <Del>
+noremap <C-e> $
+"noremap <C-f> <Right>
+noremap <C-k> D
+inoremap <C-a> <C-o>^
+inoremap <C-b> <Left>
+inoremap <C-d> <Del>
+inoremap <C-e> <C-o>$
+inoremap <C-f> <Right>
+inoremap <C-k> <C-o>D
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
+cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
