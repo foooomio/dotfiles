@@ -31,9 +31,10 @@ if version > 704 && isdirectory($DEIN)
   let g:lexima_enable_basic_rules = 0
 endif
 
+" syntax highlight
 augroup MyColors | autocmd! | augroup END
 
-if has('termguicolors')
+if isdirectory($DEIN) && has('termguicolors')
   set termguicolors
   set background=dark
   colorscheme japanesque
