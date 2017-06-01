@@ -21,7 +21,7 @@ esac
 
 # Prompt
 ! type -t __git_ps1 >/dev/null && test -f ~/bin/git-prompt.sh && . ~/bin/git-prompt.sh
-export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\$(type -t __git_ps1 >/dev/null && __git_ps1)\[\033[0m\]\n$ps "
+export PS1="\$(if [ \$? = 0 ]; then echo \[\033[32m\]; else echo \[\033[31m\]; fi)[\u@\h \w]\[\033[1;31m\]\$(type -t __git_ps1 >/dev/null && __git_ps1)\[\033[0m\]\n$ps "
 
 # Aliases
 alias ll='ls -Al'
