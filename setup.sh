@@ -55,11 +55,18 @@ __install_dein() {
   vim -c q
 }
 
+__install_anyenv() {
+  git clone https://github.com/riywo/anyenv ~/.anyenv
+  mkdir -p ~/.anyenv/plugins
+  git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+}
+
 case "${1-}" in
   install|'') __deploy_dotfiles  ;;
   uninstall)  __uninstall        ;;
   vim|dein)   __install_dein     ;;
   *brew)      __install_homebrew ;;
+  anyenv)     __install_anyenv   ;;
   *)          echo "unknown option: $1" && exit 1 ;;
 esac
 
