@@ -19,6 +19,11 @@ You may use `dein` insted of `vim`.
 ```
 You may use `brew` instead of `homebrew`.
 
+### Install anyenv (optional)
+```bash
+./setup.sh anyenv
+```
+
 ## Uninstallation
 ```bash
 ./setup.sh uninstall
