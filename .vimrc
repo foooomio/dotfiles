@@ -15,6 +15,7 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('scrooloose/nerdtree')
     call dein#add('itchyny/vim-cursorword')
     call dein#add('rhysd/clever-f.vim')
+    call dein#add('w0rp/ale')
     call dein#add('neovimhaskell/haskell-vim')
     call dein#add('derekwyatt/vim-scala')
     call dein#add('foooomio/vim-colors-japanesque')
@@ -30,6 +31,8 @@ if version > 704 && isdirectory($DEIN)
   let g:NERDTreeShowHidden = 1
   let g:NERDTreeQuitOnOpen = 1
   let g:lexima_enable_basic_rules = 0
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_enter = 0
 endif
 
 " syntax highlight
