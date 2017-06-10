@@ -52,3 +52,13 @@ alias gdc='git diff --cached'
 alias gl='git log'
 alias gs='git status'
 alias glg='git log --graph --oneline --decorate --all'
+
+composer() {
+  local dir="$PWD"
+  while [ -n "$dir" ]; do
+    [ -f "$dir/composer.json" ] && break
+    [ "$dir" = "/" ] && dir="." && break
+    dir="$(dirname $dir)"
+  done
+  "$(which composer)" "$@" --working-dir="$dir"
+}
