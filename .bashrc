@@ -4,6 +4,9 @@
 
 stty stop undef
 stty start undef
+shopt -s dotglob
+shopt -s extglob
+shopt -s globstar
 
 export EDITOR=vim
 
