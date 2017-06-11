@@ -54,11 +54,16 @@ alias gs='git status'
 alias glg='git log --graph --oneline --decorate --all'
 
 composer() {
-  local dir="$PWD"
+  local command="$1" && shift
+  local opt options="" dir="$PWD"
   while [ -n "$dir" ]; do
     [ -f "$dir/composer.json" ] && break
     [ "$dir" = "/" ] && dir="." && break
     dir="$(dirname $dir)"
   done
-  "$(which composer)" "$@" --working-dir="$dir"
+  for opt in "$@"; do
+    [ -e "$PWD/$opt" ] && opt="$PWD/$opt"
+    options+="$opt "
+  done
+  "$(which composer)" $command $options --working-dir="$dir"
 }
