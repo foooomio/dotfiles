@@ -9,6 +9,9 @@ shopt -s extglob
 shopt -s globstar
 
 export EDITOR=vim
+export PAGER=less
+export LESS='-R'
+export LESSOPEN='| src-hilite-lesspipe.sh %s'
 
 case "$OSTYPE" in
   darwin*)
@@ -18,7 +21,7 @@ case "$OSTYPE" in
     ;;
   linux*|cygwin)
     ps='$'
-    alias ls='ls -hF --color=auto'
+    alias ls='ls -hF --color=always'
     ;;
 esac
 
@@ -33,8 +36,9 @@ alias ..='cd ..'
 alias rmdir='rm -rf'
 
 alias tree='tree -CF'
-alias grep='grep --color=auto'
-alias diff='git diff --no-index -u'
+alias grep='grep --color=always'
+alias dmesg='dmesg --color=always'
+type -t git >/dev/null && alias diff='git diff --no-index -u' || alias diff='diff --color=always'
 
 alias h='fc -l'
 alias hs='fc -l 1 | grep'
