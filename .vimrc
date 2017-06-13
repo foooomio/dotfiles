@@ -92,14 +92,16 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 
 " editor shortcut
-nnoremap Y y$
-nnoremap <C-s> :%s/
+nnoremap y y$
+nnoremap + <c-a>
+nnoremap - <C-x>
+vnoremap < <gv
+vnoremap > >gv|
+nnoremap <Space>s :<C-u>%s/
 inoremap <silent> jj <ESC>
-nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
-nnoremap <Tab><Space> :setlocal expandtab<CR>
-nnoremap <Tab><Tab> :setlocal noexpandtab<CR>
-nnoremap <Tab>2 :setlocal ts=4 sw=2 sts=2<CR>
-nnoremap <Tab>4 :setlocal ts=4 sw=4 sts=4<CR>
+nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
+nnoremap <Tab><Tab> :<C-u>setlocal ts=4 sw=4 sts=4<CR>
+nnoremap cc :<C-u>execute 'setlocal cc=' . (&cc ? '' : '80')<CR>
 nnoremap q: <Nop>
 
 " buffer shortcut
@@ -111,8 +113,6 @@ for s:i in range(1, 9)
 endfor
 
 " window shortcut
-nnoremap <Space>s :split<CR>
-nnoremap <Space>v :vsplit<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -130,7 +130,7 @@ noremap <C-a> ^
 "noremap <C-d> <Del>
 noremap <C-e> $
 "noremap <C-f> <Right>
-noremap <C-k> D
+"noremap <C-k> D
 inoremap <C-a> <C-o>^
 inoremap <C-b> <Left>
 inoremap <C-d> <Del>
