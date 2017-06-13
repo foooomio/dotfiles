@@ -40,8 +40,8 @@ alias grep='grep --color=always'
 alias dmesg='dmesg --color=always'
 type -t git >/dev/null && alias diff='git diff --no-index -u' || alias diff='diff --color=always'
 
-alias h='fc -l'
-alias hs='fc -l 1 | grep'
+alias h='history'
+alias hs='history | grep'
 alias l=less
 alias ag='ag --color-path="1;36"'
 alias be='bundle exec'
