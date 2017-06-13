@@ -49,7 +49,7 @@ else
   autocmd MyColors ColorScheme * highlight MatchParen cterm=underline ctermbg=NONE
 endif
 
-" settings
+" appearance
 filetype plugin indent on
 syntax enable
 set number
@@ -63,16 +63,19 @@ set wildmenu
 set wildmode=longest,list,full
 set list
 set listchars=tab:>\ ,trail:-
-set noswapfile
+set mouse=
+
+" cache
+let $CACHE = $HOME . '/.cache/vim'
+if !isdirectory($CACHE) | call mkdir($CACHE, 'p') | endif
 set nobackup
 set backupskip+=/private/tmp/crontab.*
-set noundofile
-set mouse=
-augroup formatoptions
-  autocmd!
-  autocmd FileType * setlocal formatoptions=
-augroup END
+set swapfile
+set directory=$CACHE
+set undofile
+set undodir=$CACHE
 
+" indent
 set tabstop=4
 set shiftwidth=2
 set softtabstop=2
@@ -81,15 +84,24 @@ set expandtab
 set autoindent
 set smartindent
 
+" search
 set hlsearch
 set incsearch
 set showmatch
 set matchtime=1
 
+" encoding
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,latin1
 set fileformats=unix,dos,mac
 set ambiwidth=double
+
+" auto command
+augroup vimrc | autocmd! | augroup END
+autocmd vimrc FileType * setlocal formatoptions=
+autocmd vimrc SwapExists * let v:swapchoice = 'o'
+autocmd vimrc FileType * execute 'setlocal '
+  \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
 " editor shortcut
 nnoremap y y$
