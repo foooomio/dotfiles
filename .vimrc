@@ -112,9 +112,16 @@ vnoremap > >gv|
 nnoremap <Space>s :<C-u>%s/
 inoremap <silent> jj <ESC>
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
-nnoremap <Tab><Tab> :<C-u>setlocal ts=4 sw=4 sts=4<CR>
+nnoremap <Tab>e :<C-u>set expandtab!<CR>:echo (&et ? '' : 'no').'expandtab'<CR>
+nnoremap <Tab><Tab> :<C-u>call <SID>switch_indent()<CR>
 nnoremap cc :<C-u>execute 'setlocal cc=' . (&cc ? '' : '80')<CR>
 nnoremap q: <Nop>
+
+function! s:switch_indent()
+  let s:indent = (&sw == 2 ? 'ts=4 sw=4 sts=4' : 'ts=4 sw=2 sts=2')
+  execute 'setlocal ' . s:indent
+  echo s:indent
+endfunction
 
 " buffer shortcut
 nnoremap <silent> <Space>w :b#<CR>
