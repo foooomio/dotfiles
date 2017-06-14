@@ -1,3 +1,6 @@
+[user]
+	name = foooomio
+	email = foooomio@gmail.com
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
@@ -6,7 +9,5 @@
 	smudge = git-media-smudge %f
 [push]
 	default = simple
-[init]
-	templatedir = ~/.git_template
 [alias]
 	co = checkout

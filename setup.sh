@@ -8,7 +8,6 @@ DOTFILES=(
   .bashrc
   .bundle/config
   .gemrc
-  .git_template/hooks/pre-commit
   .gitconfig
   .inputrc
   .vimrc
