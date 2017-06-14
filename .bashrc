@@ -74,3 +74,22 @@ composer() {
   done
   "$(which composer)" $command $options --working-dir="$dir"
 }
+
+http() {
+  local port="${1:-8888}"
+  if type -t python3 > /dev/null; then
+    python3 -m http.server $port
+  elif type -t php > /dev/null; then
+    php -S localhost:$port
+  elif type -t ruby > /dev/null; then
+    ruby -run -e httpd -- --port=$port
+  elif type -t python2 > /dev/null; then
+    python2 -m SimpleHTTPServer $port
+  elif type -t python > /dev/null; then
+    if python -V 2>&1 | grep -q 'Python 3'; then
+      python -m http.server $port
+    else
+      python -m SimpleHTTPServer $port
+    fi
+  fi
+}
