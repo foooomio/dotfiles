@@ -15,6 +15,7 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('scrooloose/nerdtree')
     call dein#add('itchyny/vim-cursorword')
     call dein#add('rhysd/clever-f.vim')
+    call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
     call dein#add('neovimhaskell/haskell-vim')
     call dein#add('derekwyatt/vim-scala')
@@ -166,6 +167,14 @@ cnoremap <C-f> <Right>
 cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
+
+" gitgutter shortcut
+nmap <Space>gg :<C-u>GitGutterSignsToggle<CR>
+nmap <Space>ga :<C-u>GitGutterStageHunk<CR>
+nmap <Space>gc :<C-u>GitGutterUndoHunk<CR>
+nmap <Space>gd :<C-u>GitGutterPreviewHunk<CR>
+nmap <Space>gn :<C-u>GitGutterNextHunk<CR>
+nmap <Space>gp :<C-u>GitGutterPrevHunk<CR>
 
 augroup reload_vimrc
   autocmd!
