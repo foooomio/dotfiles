@@ -46,6 +46,22 @@ __install_homebrew() {
   chsh -s /usr/local/bin/bash
 }
 
+__install_vim() {
+  [[ "$OSTYPE" =~ "darwin" ]] && __install_macvim
+  __install_dein
+}
+
+__install_macvim() {
+  local api='https://api.github.com/repos/splhack/macvim-kaoriya/releases'
+  local url="$(curl -s $api | grep -m1 browser_download_url | cut -d'"' -f4)"
+  echo 'Downloading MacVim-KaoriYa'
+  curl -Lo /var/tmp/MacVim-KaoriYa.dmg "$url"
+  hdiutil attach -nobrowse -mountpoint /Volumes/MacVim-KaoriYa /var/tmp/MacVim-KaoriYa.dmg
+  echo 'Installing MacVim-KaoriYa'
+  ditto /Volumes/MacVim-KaoriYa/MacVim.app /Applications
+  hdiutil detach /Volumes/MacVim-KaoriYa
+}
+
 __install_dein() {
   local DEINDIR="${HOME}/.cache/dein"
   mkdir -p "$DEINDIR"
@@ -63,7 +79,7 @@ __install_anyenv() {
 case "${1-}" in
   install|'') __deploy_dotfiles  ;;
   uninstall)  __uninstall        ;;
-  vim|dein)   __install_dein     ;;
+  vim|dein)   __install_vim      ;;
   *brew)      __install_homebrew ;;
   anyenv)     __install_anyenv   ;;
   *)          echo "unknown option: $1" && exit 1 ;;
