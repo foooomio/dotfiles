@@ -105,7 +105,7 @@ autocmd vimrc FileType * execute 'setlocal '
   \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
 
 " editor shortcut
-nnoremap y y$
+nnoremap Y y$
 nnoremap + <c-a>
 nnoremap - <C-x>
 vnoremap < <gv
