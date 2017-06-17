@@ -65,6 +65,7 @@ set wildmode=longest,list,full
 set list
 set listchars=tab:>\ ,trail:-
 set mouse=
+set visualbell
 
 " cache
 let $CACHE = $HOME . '/.cache/vim'
