@@ -104,6 +104,7 @@ autocmd vimrc FileType * setlocal formatoptions=
 autocmd vimrc SwapExists * let v:swapchoice = 'o'
 autocmd vimrc FileType * execute 'setlocal '
   \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
+autocmd vimrc FileType html,css setlocal tabstop=4 shiftwidth=2 softtabstop=2
 
 " editor shortcut
 nnoremap Y y$
