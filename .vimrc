@@ -91,6 +91,8 @@ set hlsearch
 set incsearch
 set showmatch
 set matchtime=1
+set ignorecase
+set smartcase
 
 " encoding
 set fileencoding=utf-8
@@ -99,12 +101,16 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 
 " auto command
-augroup vimrc | autocmd! | augroup END
-autocmd vimrc FileType * setlocal formatoptions=
-autocmd vimrc SwapExists * let v:swapchoice = 'o'
-autocmd vimrc FileType * execute 'setlocal '
-  \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
-autocmd vimrc FileType html,css setlocal tabstop=4 shiftwidth=2 softtabstop=2
+augroup vimrc
+  autocmd!
+  autocmd FileType * setlocal formatoptions=
+  autocmd SwapExists * let v:swapchoice = 'o'
+  autocmd FileType * execute 'setlocal '
+        \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
+  autocmd FileType html,css setlocal tabstop=4 shiftwidth=2 softtabstop=2
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l* lwindow
+augroup END
 
 " editor shortcut
 nnoremap Y y$
@@ -145,6 +151,10 @@ noremap <silent> j gj
 noremap <silent> k gk
 noremap <silent> gj j
 noremap <silent> gk k
+
+" quickfix shortcut
+nnoremap <C-n> :cnext<CR>
+nnoremap <C-p> :cprev<CR>
 
 " emacs-style editing
 noremap <C-a> ^
