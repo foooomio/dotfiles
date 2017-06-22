@@ -107,7 +107,8 @@ augroup vimrc
   autocmd SwapExists * let v:swapchoice = 'o'
   autocmd FileType * execute 'setlocal '
         \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
-  autocmd FileType html,css setlocal tabstop=4 shiftwidth=2 softtabstop=2
+  autocmd FileType javascript,json,php
+        \ setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l* lwindow
 augroup END
