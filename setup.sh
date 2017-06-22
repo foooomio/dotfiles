@@ -52,8 +52,8 @@ __install_vim() {
 }
 
 __install_macvim() {
-  local api='https://api.github.com/repos/splhack/macvim-kaoriya/releases'
-  local url="$(curl -s $api | grep -m1 browser_download_url | cut -d'"' -f4)"
+  local api='https://api.github.com/repos/splhack/macvim-kaoriya/releases/latest'
+  local url="$(curl -s $api | jq -r .assets[0].browser_download_url)"
   echo 'Downloading MacVim-KaoriYa'
   curl -Lo /var/tmp/MacVim-KaoriYa.dmg "$url"
   hdiutil attach -nobrowse -mountpoint /Volumes/MacVim-KaoriYa /var/tmp/MacVim-KaoriYa.dmg

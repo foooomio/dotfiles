@@ -3,6 +3,7 @@ bash-completion
 git
 git-flow
 gnu-sed
+jq
 nkf
 openssl
 readline
