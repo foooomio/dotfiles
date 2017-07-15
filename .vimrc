@@ -63,6 +63,8 @@ set laststatus=2
 set statusline=%F\ %m%r%h%w%=\ %{&ft}\ %{&fenc}\ %{&ff}
 set wildmenu
 set wildmode=longest,list,full
+set wildignorecase
+set wildignore+=*.lock,vendor/**,node_modules/**
 set list
 set listchars=tab:>\ ,trail:-
 set mouse=
