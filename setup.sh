@@ -52,13 +52,14 @@ __install_vim() {
 }
 
 __install_macvim() {
+  local dmg='/var/tmp/MacVim-KaoriYa.dmg'
   local api='https://api.github.com/repos/splhack/macvim-kaoriya/releases/latest'
   local url="$(curl -s $api | jq -r .assets[0].browser_download_url)"
-  echo 'Downloading MacVim-KaoriYa'
-  curl -Lo /var/tmp/MacVim-KaoriYa.dmg "$url"
-  hdiutil attach -nobrowse -mountpoint /Volumes/MacVim-KaoriYa /var/tmp/MacVim-KaoriYa.dmg
-  echo 'Installing MacVim-KaoriYa'
-  ditto /Volumes/MacVim-KaoriYa/MacVim.app /Applications
+  echo "Downloading $url"
+  curl -Lo "$dmg"  "$url"
+  hdiutil attach -nobrowse -mountpoint /Volumes/MacVim-KaoriYa "$dmg"
+  echo "Installing $dmg"
+  ditto /Volumes/MacVim-KaoriYa/MacVim.app /Applications/MacVim.app
   hdiutil detach /Volumes/MacVim-KaoriYa
 }
 
@@ -80,6 +81,7 @@ case "${1-}" in
   install|'') __deploy_dotfiles  ;;
   uninstall)  __uninstall        ;;
   vim|dein)   __install_vim      ;;
+  macvim)     __install_macvim   ;;
   *brew)      __install_homebrew ;;
   anyenv)     __install_anyenv   ;;
   *)          echo "unknown option: $1" && exit 1 ;;
