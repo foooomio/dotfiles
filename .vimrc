@@ -144,17 +144,15 @@ for s:i in range(1, 9)
   execute 'nmap <silent> <Space>' . s:i . ' <Plug>BufTabLine.Go(' . s:i . ')'
 endfor
 
-" window shortcut
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " cursor shortcut
 noremap <silent> j gj
 noremap <silent> k gk
 noremap <silent> gj j
 noremap <silent> gk k
+nnoremap <silent> <C-h> 5h
+nnoremap <silent> <C-j> 5j
+nnoremap <silent> <C-k> 5k
+nnoremap <silent> <C-l> 5l
 
 " quickfix shortcut
 nnoremap <C-n> :cnext<CR>
