@@ -12,6 +12,13 @@ export EDITOR=vim
 export PAGER=less
 export LESS='-R'
 export LESSOPEN='| src-hilite-lesspipe.sh %s'
+export LESS_TERMCAP_mb=$'\e[1;36m'
+export LESS_TERMCAP_md=$'\e[1;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[0;30;43m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[4;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
 
 case "$OSTYPE" in
   darwin*)
