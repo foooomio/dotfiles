@@ -9,8 +9,8 @@ fi
 # Path
 PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH" # basic
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
-PATH="/Applications/MacVim.app/Contents/MacOS:$PATH"  # MacVim
-PATH="/usr/local/heroku/bin:$PATH"                    # heroku
+PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
+PATH="$HOME/go/bin:/usr/local/heroku/bin:$PATH"       # misc
 export PATH
 
 # anyenv
