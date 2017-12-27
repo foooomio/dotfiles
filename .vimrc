@@ -12,13 +12,14 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('embear/vim-localvimrc')
     call dein#add('ap/vim-buftabline')
     call dein#add('cohama/lexima.vim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('itchyny/vim-cursorword')
+    call dein#add('cocopon/vaffle.vim')
+    call dein#add('tyru/caw.vim')
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
     call dein#add('neovimhaskell/haskell-vim')
     call dein#add('derekwyatt/vim-scala')
+    call dein#add('posva/vim-vue')
     call dein#add('foooomio/vim-colors-japanesque')
     call dein#add('foooomio/vim-current-syntax')
     call dein#end()
@@ -29,8 +30,6 @@ if version > 704 && isdirectory($DEIN)
   endif
   let g:localvimrc_ask = 0
   let g:buftabline_numbers = 2
-  let g:NERDTreeShowHidden = 1
-  let g:NERDTreeQuitOnOpen = 1
   let g:lexima_enable_basic_rules = 0
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_lint_on_enter = 0
@@ -73,7 +72,8 @@ set visualbell
 " cache
 let $CACHE = $HOME . '/.cache/vim'
 if !isdirectory($CACHE) | call mkdir($CACHE, 'p') | endif
-set nobackup
+set backup
+set backupdir=$CACHE
 set backupskip+=/private/tmp/crontab.*
 set swapfile
 set directory=$CACHE
@@ -110,7 +110,7 @@ augroup vimrc
   autocmd SwapExists * let v:swapchoice = 'o'
   autocmd FileType * execute 'setlocal '
         \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
-  autocmd FileType javascript,json,php
+  autocmd FileType php
         \ setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l* lwindow
@@ -125,9 +125,9 @@ vnoremap > >gv|
 nnoremap <Space>s :<C-u>%s/
 inoremap <silent> jj <ESC>
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
-nnoremap <Tab>e :<C-u>set expandtab!<CR>:echo (&et ? '' : 'no').'expandtab'<CR>
+nnoremap <Tab>e :<C-u>set expandtab!<CR>:set expandtab?<CR>
 nnoremap <Tab><Tab> :<C-u>call <SID>switch_indent()<CR>
-nnoremap cc :<C-u>execute 'setlocal cc=' . (&cc ? '' : '80')<CR>
+nnoremap <silent> cc :<C-u>execute 'setlocal cc=' . (&cc ? '' : '80')<CR>
 nnoremap q: <Nop>
 
 function! s:switch_indent()
