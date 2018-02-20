@@ -24,6 +24,11 @@ export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND="history -a; history -n"
 
+# XDG Base Directory
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # bash completion
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
