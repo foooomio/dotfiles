@@ -13,10 +13,9 @@ PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
 PATH="$HOME/go/bin:/usr/local/heroku/bin:$PATH"       # misc
 export PATH
 
-# anyenv
-if [ -d ~/.anyenv ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init - --no-rehash)"
+# rbenv
+if [ -d ~/.rbenv ]; then
+  eval "$(rbenv init -)"
 fi
 
 # History
