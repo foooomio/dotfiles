@@ -14,6 +14,8 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('cohama/lexima.vim')
     call dein#add('cocopon/vaffle.vim')
     call dein#add('tyru/caw.vim')
+    call dein#add('tpope/vim-surround')
+    call dein#add('haya14busa/incsearch.vim')
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
@@ -31,9 +33,14 @@ if version > 704 && isdirectory($DEIN)
   let g:localvimrc_ask = 0
   let g:buftabline_numbers = 2
   let g:lexima_enable_basic_rules = 0
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_text_changed = 'normal'
+  let g:ale_lint_on_insert_leave = 1
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:incsearch#auto_nohlsearch = 1
+  map n <Plug>(incsearch-nohl-n)
+  map N <Plug>(incsearch-nohl-N)
+  map * <Plug>(incsearch-nohl-*)
+  map # <Plug>(incsearch-nohl-#)
 endif
 
 " syntax highlight
@@ -139,7 +146,6 @@ endfunction
 " buffer shortcut
 nnoremap <silent> <Space>w :b#<CR>
 nnoremap <silent> <Space>d :bd<CR>
-nnoremap <silent> <Space>e :NERDTreeToggle<CR>
 for s:i in range(1, 9)
   execute 'nmap <silent> <Space>' . s:i . ' <Plug>BufTabLine.Go(' . s:i . ')'
 endfor
@@ -149,10 +155,6 @@ noremap <silent> j gj
 noremap <silent> k gk
 noremap <silent> gj j
 noremap <silent> gk k
-nnoremap <silent> <C-h> 5h
-nnoremap <silent> <C-j> 5j
-nnoremap <silent> <C-k> 5k
-nnoremap <silent> <C-l> 5l
 
 " quickfix shortcut
 nnoremap <C-n> :cnext<CR>
