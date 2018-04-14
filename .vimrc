@@ -15,6 +15,7 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('cocopon/vaffle.vim')
     call dein#add('tyru/caw.vim')
     call dein#add('tpope/vim-surround')
+    call dein#add('tpope/vim-sleuth')
     call dein#add('haya14busa/incsearch.vim')
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
@@ -115,8 +116,6 @@ augroup vimrc
   autocmd!
   autocmd FileType * setlocal formatoptions=
   autocmd SwapExists * let v:swapchoice = 'o'
-  autocmd FileType * execute 'setlocal '
-        \ . (search('^\t.*\n\t.*\n\t', 'n') ? 'no' : '') . 'expandtab'
   autocmd FileType php
         \ setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd QuickFixCmdPost [^l]* cwindow
