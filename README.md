@@ -3,25 +3,25 @@ My dotfiles
 
 ## Installation
 ```bash
-git clone https://github.com/foooomio/dotfiles.git && cd dotfiles && ./setup.sh
+git clone https://github.com/foooomio/dotfiles.git && cd dotfiles && ./setup.sh install
 ```
 Original files will be backed up in `~/.backup`.
 
-### Install Vim plugins (optional)
-```bash
-./setup.sh vim
-```
-You may use `dein` insted of `vim`.
+## Optional Installation
 
-### Install Homebrew (optional)
+### Vim plugins
+```bash
+./setup.sh dein
+```
+
+### MacVim
 ```bash
 ./setup.sh homebrew
 ```
-You may use `brew` instead of `homebrew`.
 
-### Install anyenv (optional)
+### Homebrew
 ```bash
-./setup.sh anyenv
+./setup.sh homebrew
 ```
 
 ## Uninstallation

@@ -28,7 +28,7 @@ __deploy_dotfiles() {
   done
 }
 
-__uninstall() {
+__revert_dotfiles() {
   local FILE
   for FILE in "${DOTFILES[@]}"; do
     test -L "${HOME}/${FILE}" && unlink "${HOME}/${FILE}"
@@ -44,11 +44,6 @@ __install_homebrew() {
   cat "${BASEDIR}/brewlist" | xargs brew install
   sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
   chsh -s /usr/local/bin/bash
-}
-
-__install_vim() {
-  [[ "$OSTYPE" =~ "darwin" ]] && __install_macvim
-  __install_dein
 }
 
 __install_macvim() {
@@ -71,19 +66,13 @@ __install_dein() {
   vim -c q
 }
 
-__install_anyenv() {
-  git clone https://github.com/riywo/anyenv ~/.anyenv
-  mkdir -p ~/.anyenv/plugins
-  git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
-}
-
 case "${1-}" in
-  install|'') __deploy_dotfiles  ;;
-  uninstall)  __uninstall        ;;
-  vim|dein)   __install_vim      ;;
+  install)    __deploy_dotfiles  ;;
+  uninstall)  __revert_dotfiles  ;;
+  dein)       __install_dein     ;;
   macvim)     __install_macvim   ;;
   *brew)      __install_homebrew ;;
-  anyenv)     __install_anyenv   ;;
+  help|'')    echo "command: install|uninstall|dein|macvim|homebrew" && exit 0 ;;
   *)          echo "unknown option: $1" && exit 1 ;;
 esac
 
