@@ -7,7 +7,9 @@ jq
 nkf
 openssl
 readline
+ripgrep
 source-highlight
 the_silver_searcher
+tidy-html5
 tree
 wget
