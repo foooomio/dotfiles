@@ -20,11 +20,7 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
-    call dein#add('neovimhaskell/haskell-vim')
-    call dein#add('derekwyatt/vim-scala')
-    call dein#add('posva/vim-vue')
     call dein#add('foooomio/vim-colors-japanesque')
-    call dein#add('foooomio/vim-current-syntax')
     call dein#end()
     call dein#save_state()
   endif
@@ -74,7 +70,6 @@ set wildignorecase
 set wildignore+=*.lock,vendor/**,node_modules/**
 set list
 set listchars=tab:>\ ,trail:-
-set mouse=
 set visualbell
 
 " cache
@@ -118,6 +113,7 @@ augroup vimrc
   autocmd SwapExists * let v:swapchoice = 'o'
   autocmd FileType php
         \ setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd FileType go setlocal listchars=tab:\ \ ,trail:-
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l* lwindow
 augroup END
@@ -195,9 +191,6 @@ augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
-
-command! Hitest source $VIMRUNTIME/syntax/hitest.vim
-nnoremap <Space>h :call CurrentSyntax()<CR>
 
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')

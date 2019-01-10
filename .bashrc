@@ -84,12 +84,12 @@ composer() {
 
 http() {
   local port="${1:-8888}"
-  if type -t python3 > /dev/null; then
-    python3 -m http.server $port
-  elif type -t php > /dev/null; then
+  if type -t php > /dev/null; then
     php -S localhost:$port
   elif type -t ruby > /dev/null; then
     ruby -run -e httpd -- --port=$port
+  elif type -t python3 > /dev/null; then
+    python3 -m http.server $port
   elif type -t python2 > /dev/null; then
     python2 -m SimpleHTTPServer $port
   elif type -t python > /dev/null; then

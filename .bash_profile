@@ -8,6 +8,8 @@ fi
 
 # Path
 PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH" # basic
+PATH="/usr/local/opt/ruby/bin:$PATH"                  # ruby
+PATH="/usr/local/opt/openssl/bin:$PATH"               # openssl
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
 PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
 PATH="$HOME/go/bin:/usr/local/heroku/bin:$PATH"       # misc
@@ -19,10 +21,8 @@ if [ -d ~/.rbenv ]; then
 fi
 
 # History
-shopt -s histappend
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
-export PROMPT_COMMAND="history -a; history -n"
 
 # XDG Base Directory
 export XDG_CONFIG_HOME="$HOME/.config"

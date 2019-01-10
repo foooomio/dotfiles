@@ -5,11 +5,12 @@ git-flow
 gnu-sed
 jq
 nkf
-openssl
-readline
+node
+python
 ripgrep
+ruby
+shellcheck
 source-highlight
-the_silver_searcher
 tidy-html5
 tree
 wget

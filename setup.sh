@@ -41,21 +41,21 @@ __revert_dotfiles() {
 __install_homebrew() {
   echo 'Before installing Homebrew, execute `xcode-select --install`'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  cat "${BASEDIR}/brewlist" | xargs brew install
+  brew install $(< brewlist)
   sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
   chsh -s /usr/local/bin/bash
 }
 
 __install_macvim() {
-  local dmg='/var/tmp/MacVim-KaoriYa.dmg'
-  local api='https://api.github.com/repos/splhack/macvim-kaoriya/releases/latest'
+  local dmg='/var/tmp/MacVim.dmg'
+  local api='https://api.github.com/repos/macvim-dev/macvim/releases/latest'
   local url="$(curl -s $api | jq -r .assets[0].browser_download_url)"
   echo "Downloading $url"
-  curl -Lo "$dmg"  "$url"
-  hdiutil attach -nobrowse -mountpoint /Volumes/MacVim-KaoriYa "$dmg"
+  curl -Lo "$dmg" "$url"
+  hdiutil attach -nobrowse -mountpoint /Volumes/MacVim "$dmg"
   echo "Installing $dmg"
-  ditto /Volumes/MacVim-KaoriYa/MacVim.app /Applications/MacVim.app
-  hdiutil detach /Volumes/MacVim-KaoriYa
+  ditto /Volumes/MacVim/MacVim.app /Applications/MacVim.app
+  hdiutil detach /Volumes/MacVim
 }
 
 __install_dein() {
