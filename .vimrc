@@ -20,6 +20,7 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
+    call dein#add('mechatroner/rainbow_csv')
     call dein#add('foooomio/vim-colors-japanesque')
     call dein#end()
     call dein#save_state()
@@ -73,7 +74,7 @@ set listchars=tab:>\ ,trail:-
 set visualbell
 
 " cache
-let $CACHE = $HOME . '/.cache/vim'
+let $CACHE = $HOME . '/.cache/vim//'
 if !isdirectory($CACHE) | call mkdir($CACHE, 'p') | endif
 set backup
 set backupdir=$CACHE
