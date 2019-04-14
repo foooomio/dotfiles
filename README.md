@@ -16,7 +16,7 @@ Original files will be backed up in `~/.backup`.
 
 ### MacVim
 ```bash
-./setup.sh homebrew
+./setup.sh macvim
 ```
 
 ### Homebrew
