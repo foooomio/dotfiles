@@ -10,15 +10,8 @@ shopt -s globstar
 
 export EDITOR=vim
 export PAGER=less
-export LESS='-R'
+export LESS='-ij4MQR'
 export LESSOPEN='| src-hilite-lesspipe.sh %s'
-export LESS_TERMCAP_mb=$'\e[1;36m'
-export LESS_TERMCAP_md=$'\e[1;31m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[0;30;43m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[4;32m'
-export LESS_TERMCAP_ue=$'\e[0m'
 
 case "$OSTYPE" in
   darwin*)
@@ -47,10 +40,9 @@ alias grep='grep --color=always'
 alias dmesg='dmesg --color=always'
 type -t git >/dev/null && alias diff='git diff --no-index -u' || alias diff='diff --color=always'
 
-alias h='history'
-alias hs='history | grep'
+alias h='history | grep'
+alias hl='history | less'
 alias l=less
-alias ag='ag --color-path="1;36"'
 alias be='bundle exec'
 
 alias ga='git add'
@@ -67,6 +59,17 @@ alias gl='git log'
 alias gs='git status'
 alias glg='git log --graph --oneline --decorate --all'
 
+man() {
+  LESS_TERMCAP_mb=$'\e[1;36m'   \
+  LESS_TERMCAP_md=$'\e[1;31m'   \
+  LESS_TERMCAP_me=$'\e[0m'      \
+  LESS_TERMCAP_so=$'\e[0;30;43m'\
+  LESS_TERMCAP_se=$'\e[0m'      \
+  LESS_TERMCAP_us=$'\e[4;32m'   \
+  LESS_TERMCAP_ue=$'\e[0m'      \
+  command man "$@"
+}
+
 composer() {
   local command="$1" && shift
   local opt options="" dir="$PWD"
@@ -79,7 +82,7 @@ composer() {
     [ -e "$PWD/$opt" ] && opt="$PWD/$opt"
     options+="$opt "
   done
-  "$(which composer)" $command $options --working-dir="$dir"
+  command composer $command $options --working-dir="$dir"
 }
 
 http() {
