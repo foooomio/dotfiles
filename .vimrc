@@ -20,6 +20,8 @@ if version > 704 && isdirectory($DEIN)
     call dein#add('rhysd/clever-f.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
+    call dein#add('editorconfig/editorconfig-vim')
+    call dein#add('niklasl/vim-rdf')
     call dein#add('mechatroner/rainbow_csv')
     call dein#add('foooomio/vim-colors-japanesque')
     call dein#end()
@@ -115,6 +117,7 @@ augroup vimrc
   autocmd FileType php
         \ setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd FileType go setlocal listchars=tab:\ \ ,trail:-
+  autocmd BufNewFile,BufRead *.rdf setfiletype xml
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l* lwindow
 augroup END
@@ -181,12 +184,12 @@ cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
 " gitgutter shortcut
-nmap <Space>gg :<C-u>GitGutterSignsToggle<CR>
-nmap <Space>ga :<C-u>GitGutterStageHunk<CR>
-nmap <Space>gc :<C-u>GitGutterUndoHunk<CR>
-nmap <Space>gd :<C-u>GitGutterPreviewHunk<CR>
-nmap <Space>gn :<C-u>GitGutterNextHunk<CR>
-nmap <Space>gp :<C-u>GitGutterPrevHunk<CR>
+nnoremap <Space>gg :<C-u>GitGutterSignsToggle<CR>
+nnoremap <Space>ga :<C-u>GitGutterStageHunk<CR>
+nnoremap <Space>gu :<C-u>GitGutterUndoHunk<CR>
+nnoremap <Space>gd :<C-u>GitGutterPreviewHunk<CR>
+nnoremap <Space>gn :<C-u>GitGutterNextHunk<CR>
+nnoremap <Space>gp :<C-u>GitGutterPrevHunk<CR>
 
 augroup reload_vimrc
   autocmd!

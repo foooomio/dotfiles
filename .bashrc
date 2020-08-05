@@ -10,8 +10,7 @@ shopt -s globstar
 
 export EDITOR=vim
 export PAGER=less
-export LESS='-ij4MQR'
-export LESSOPEN='| src-hilite-lesspipe.sh %s'
+export LESS='-iMQR'
 
 case "$OSTYPE" in
   darwin*)

@@ -12,7 +12,8 @@ PATH="/usr/local/opt/ruby/bin:$PATH"                  # ruby
 PATH="/usr/local/opt/openssl/bin:$PATH"               # openssl
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
 PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
-PATH="$HOME/go/bin:/usr/local/heroku/bin:$PATH"       # misc
+PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"            # misc
+PATH="$(ruby -e 'print Gem.dir')/bin:$PATH"
 export PATH
 
 # rbenv

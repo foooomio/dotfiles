@@ -40,7 +40,7 @@ __revert_dotfiles() {
 
 __install_homebrew() {
   echo 'Before installing Homebrew, execute `xcode-select --install`'
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew install $(< brewlist)
   sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
   chsh -s /usr/local/bin/bash
