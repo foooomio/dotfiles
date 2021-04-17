@@ -34,10 +34,10 @@ alias la='ls -A'
 alias ..='cd ..'
 alias rmdir='rm -rf'
 
-alias tree='tree -CF'
+alias tree='tree -CF -I node_modules'
 alias grep='grep --color=always'
 alias dmesg='dmesg --color=always'
-type -t git >/dev/null && alias diff='git diff --no-index -u' || alias diff='diff --color=always'
+alias diff='git diff --no-index -u'
 
 alias h='history | grep'
 alias hl='history | less'
@@ -69,36 +69,3 @@ man() {
   command man "$@"
 }
 
-composer() {
-  local command="$1" && shift
-  local opt options="" dir="$PWD"
-  while [ -n "$dir" ]; do
-    [ -f "$dir/composer.json" ] && break
-    [ "$dir" = "/" ] && dir="." && break
-    dir="$(dirname $dir)"
-  done
-  for opt in "$@"; do
-    [ -e "$PWD/$opt" ] && opt="$PWD/$opt"
-    options+="$opt "
-  done
-  command composer $command $options --working-dir="$dir"
-}
-
-http() {
-  local port="${1:-8888}"
-  if type -t php > /dev/null; then
-    php -S localhost:$port
-  elif type -t ruby > /dev/null; then
-    ruby -run -e httpd -- --port=$port
-  elif type -t python3 > /dev/null; then
-    python3 -m http.server $port
-  elif type -t python2 > /dev/null; then
-    python2 -m SimpleHTTPServer $port
-  elif type -t python > /dev/null; then
-    if python -V 2>&1 | grep -q 'Python 3'; then
-      python -m http.server $port
-    else
-      python -m SimpleHTTPServer $port
-    fi
-  fi
-}

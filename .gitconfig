@@ -13,3 +13,7 @@
 	co = checkout
 [branch]
 	autoSetupMerge = false
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master

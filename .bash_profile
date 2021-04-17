@@ -16,11 +16,6 @@ PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"            # misc
 PATH="$(ruby -e 'print Gem.dir')/bin:$PATH"
 export PATH
 
-# rbenv
-if [ -d ~/.rbenv ]; then
-  eval "$(rbenv init -)"
-fi
-
 # History
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
@@ -31,8 +26,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # bash completion
-if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
+if [ -r /usr/local/etc/profile.d/bash_completion.sh ]; then
+  . /usr/local/etc/profile.d/bash_completion.sh
 fi
 
 # bash_local
