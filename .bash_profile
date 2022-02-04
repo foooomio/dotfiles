@@ -7,9 +7,11 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # Path
-PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH" # basic
+PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="/usr/local/opt/ruby/bin:$PATH"                  # ruby
 PATH="/usr/local/opt/openssl/bin:$PATH"               # openssl
+PATH="/usr/local/opt/curl/bin:$PATH"                  # curl
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"  # coreutils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
 PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
 PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"            # misc

@@ -1,9 +1,11 @@
+asdf
 bash
 bash-completion@2
+coreutils
+curl
 gawk
 git
 gnu-sed
-jq
 nkf
 python
 ruby
