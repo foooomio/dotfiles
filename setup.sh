@@ -1,24 +1,25 @@
 #!/bin/bash
 set -eu
 
-BASEDIR="$(cd $(dirname $0);pwd)"
+BASEDIR="$(cd "$(dirname "$0")";pwd)"
 BACKUPDIR="${HOME}/.backup"
 DOTFILES=(
   .bash_profile
   .bashrc
   .bundle/config
+  .config/git/config
+  .config/git/ignore
   .gemrc
-  .gitconfig
   .inputrc
   .vimrc
   .Xmodmap
 )
 
 __deploy_dotfiles() {
-  local FILE
+  local FILE DIRNAME
   for FILE in "${DOTFILES[@]}"; do
-    local DIRNAME="$(dirname $FILE)"
-    if [ -f "${HOME}/${FILE}" -a ! -L "${HOME}/${FILE}" ]; then
+    DIRNAME="$(dirname "$FILE")"
+    if [[ -f "${HOME}/${FILE}" && ! -L "${HOME}/${FILE}" ]]; then
       mkdir -p "${BACKUPDIR}/${DIRNAME}"
       mv -f "${HOME}/${FILE}" "${BACKUPDIR}/${FILE}"
       echo "Created backup in ${BACKUPDIR}/${FILE}"
@@ -39,17 +40,15 @@ __revert_dotfiles() {
 }
 
 __install_homebrew() {
-  echo 'Before installing Homebrew, execute `xcode-select --install`'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew install $(< brewlist)
-  sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
-  chsh -s /usr/local/bin/bash
 }
 
 __install_macvim() {
-  local dmg='/var/tmp/MacVim.dmg'
-  local api='https://api.github.com/repos/macvim-dev/macvim/releases/latest'
-  local url="$(curl -s $api | jq -r .assets[0].browser_download_url)"
+  local dmg api url
+  dmg="/var/tmp/MacVim.dmg"
+  api="https://api.github.com/repos/macvim-dev/macvim/releases/latest"
+  url="$(curl -fsSL $api | jq -r .assets[1].browser_download_url)"
   echo "Downloading $url"
   curl -Lo "$dmg" "$url"
   hdiutil attach -nobrowse -mountpoint /Volumes/MacVim "$dmg"
@@ -59,7 +58,8 @@ __install_macvim() {
 }
 
 __install_dein() {
-  local DEINDIR="${HOME}/.cache/dein"
+  local DEINDIR
+  DEINDIR="${HOME}/.cache/dein"
   mkdir -p "$DEINDIR"
   curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > "${DEINDIR}/installer.sh"
   bash "${DEINDIR}/installer.sh" "$DEINDIR"
@@ -76,5 +76,5 @@ case "${1-}" in
   *)          echo "unknown option: $1" && exit 1 ;;
 esac
 
-echo 'Operation completed.'
+echo "Operation completed."
 exit 0

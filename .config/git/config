@@ -2,7 +2,6 @@
 	name = foooomio
 	email = foooomio@gmail.com
 [core]
-	excludesfile = ~/.gitignore
 	editor = vim
 [filter "media"]
 	clean = git-media-clean %f
@@ -17,3 +16,5 @@
 	rebase = false
 [init]
 	defaultBranch = master
+[includeIf "gitdir:~/code/kudasai/"]
+	path = ~/code/kudasai/.gitconfig

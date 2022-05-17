@@ -36,6 +36,7 @@ if version > 704 && isdirectory($DEIN)
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_linters_ignore = { 'javascript': ['deno'], 'typescript': ['deno'] }
   let g:incsearch#auto_nohlsearch = 1
   map n <Plug>(incsearch-nohl-n)
   map N <Plug>(incsearch-nohl-N)

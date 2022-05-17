@@ -6,18 +6,6 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-# Path
-PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="/usr/local/opt/ruby/bin:$PATH"                  # ruby
-PATH="/usr/local/opt/openssl/bin:$PATH"               # openssl
-PATH="/usr/local/opt/curl/bin:$PATH"                  # curl
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"  # coreutils
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"    # gnu-sed
-PATH="/Applications/MacVim.app/Contents/bin:$PATH"    # MacVim
-PATH="$HOME/go/bin:$HOME/.cargo/bin:$PATH"            # misc
-PATH="$(ruby -e 'print Gem.dir')/bin:$PATH"
-export PATH
-
 # History
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
@@ -26,6 +14,9 @@ export HISTCONTROL=ignoreboth
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_CACHE_HOME"
+mkdir -p "$XDG_DATA_HOME"
 
 # bash completion
 if [ -r /usr/local/etc/profile.d/bash_completion.sh ]; then
