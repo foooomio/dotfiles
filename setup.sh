@@ -40,7 +40,7 @@ __revert_dotfiles() {
 }
 
 __install_homebrew() {
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install $(< brewlist)
 }
 
@@ -48,7 +48,7 @@ __install_macvim() {
   local dmg api url
   dmg="/var/tmp/MacVim.dmg"
   api="https://api.github.com/repos/macvim-dev/macvim/releases/latest"
-  url="$(curl -fsSL $api | jq -r .assets[1].browser_download_url)"
+  url="$(curl -fsSL $api | jq -r '.assets[] | select(.name == "MacVim.dmg").browser_download_url')"
   echo "Downloading $url"
   curl -Lo "$dmg" "$url"
   hdiutil attach -nobrowse -mountpoint /Volumes/MacVim "$dmg"

@@ -18,3 +18,5 @@
 	defaultBranch = master
 [includeIf "gitdir:~/code/kudasai/"]
 	path = ~/code/kudasai/.gitconfig
+[includeIf "gitdir:~/code/nakochi/"]
+	path = ~/code/nakochi/.gitconfig

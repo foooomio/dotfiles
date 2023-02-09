@@ -1,4 +1,3 @@
-asdf
 bash
 bash-completion@2
 coreutils
@@ -6,9 +5,15 @@ curl
 gawk
 git
 gnu-sed
+go
+jq
 nkf
+node
 python
+ripgrep
 ruby
+sqlite
+tmux
 tree
 wget
 yarn-completion
