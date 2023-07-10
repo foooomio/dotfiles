@@ -18,13 +18,20 @@ mkdir -p "$XDG_CONFIG_HOME"
 mkdir -p "$XDG_CACHE_HOME"
 mkdir -p "$XDG_DATA_HOME"
 
-# bash completion
-if [[ -r /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
-  . /opt/homebrew/etc/profile.d/bash_completion.sh
-elif [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
-  . /usr/local/etc/profile.d/bash_completion.sh
-elif [[ -r /etc/profile.d/bash_completion.sh ]]; then
-  . /etc/profile.d/bash_completion.sh
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# bash-completion
+BASH_COMPLETION_PATH="$(brew --prefix 2>/dev/null)/etc/profile.d/bash_completion.sh"
+if [[ -r "$BASH_COMPLETION_PATH" ]]; then
+  . "$BASH_COMPLETION_PATH"
 fi
 
 # bash_local
