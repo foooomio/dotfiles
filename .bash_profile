@@ -28,12 +28,6 @@ elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-# bash-completion
-BASH_COMPLETION_PATH="$(brew --prefix 2>/dev/null)/etc/profile.d/bash_completion.sh"
-if [[ -r "$BASH_COMPLETION_PATH" ]]; then
-  . "$BASH_COMPLETION_PATH"
-fi
-
 # bash_local
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
