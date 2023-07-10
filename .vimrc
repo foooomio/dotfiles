@@ -32,7 +32,6 @@ if version > 704 && isdirectory($DEIN)
   endif
   let g:localvimrc_ask = 0
   let g:buftabline_numbers = 2
-  let g:lexima_enable_basic_rules = 0
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'

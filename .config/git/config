@@ -7,13 +7,15 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [push]
-	default = simple
+	default = current
 [alias]
 	co = checkout
 [branch]
 	autoSetupMerge = false
 [pull]
 	rebase = false
+[fetch]
+	prune = true
 [init]
 	defaultBranch = master
 [includeIf "gitdir:~/code/kudasai/"]

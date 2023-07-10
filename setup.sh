@@ -6,10 +6,8 @@ BACKUPDIR="${HOME}/.backup"
 DOTFILES=(
   .bash_profile
   .bashrc
-  .bundle/config
   .config/git/config
   .config/git/ignore
-  .gemrc
   .inputrc
   .vimrc
   .Xmodmap

@@ -19,8 +19,12 @@ mkdir -p "$XDG_CACHE_HOME"
 mkdir -p "$XDG_DATA_HOME"
 
 # bash completion
-if [ -r /usr/local/etc/profile.d/bash_completion.sh ]; then
+if [[ -r /opt/homebrew/etc/profile.d/bash_completion.sh ]]; then
+  . /opt/homebrew/etc/profile.d/bash_completion.sh
+elif [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
   . /usr/local/etc/profile.d/bash_completion.sh
+elif [[ -r /etc/profile.d/bash_completion.sh ]]; then
+  . /etc/profile.d/bash_completion.sh
 fi
 
 # bash_local
