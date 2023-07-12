@@ -2,10 +2,6 @@
 # ~/.bash_profile
 #
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-
 # History
 export HISTSIZE=10000
 export HISTCONTROL=ignoreboth
@@ -31,4 +27,9 @@ fi
 # bash_local
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
+fi
+
+# bashrc
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
 fi

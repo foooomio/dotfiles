@@ -14,9 +14,9 @@ export LESS='-iMQR'
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 
 # bash-completion
-BASH_COMPLETION_PATH="$(brew --prefix 2>/dev/null)/etc/profile.d/bash_completion.sh"
-if [[ -r "$BASH_COMPLETION_PATH" ]]; then
-  . "$BASH_COMPLETION_PATH"
+BASH_COMPLETION_SH="$(brew --prefix 2>/dev/null)/etc/profile.d/bash_completion.sh"
+if [[ -r "$BASH_COMPLETION_SH" ]]; then
+  . "$BASH_COMPLETION_SH"
 fi
 
 # Prompt

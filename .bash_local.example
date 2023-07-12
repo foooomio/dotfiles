@@ -11,6 +11,7 @@ PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/Applications/MacVim.app/Contents/bin:$PATH"
 PATH="$(ruby -e 'print Gem.dir')/bin:$PATH"
 PATH="$(yarn global bin):$PATH"
+export PATH
 
 # Node
 export N_PREFIX="$HOME/.local"
