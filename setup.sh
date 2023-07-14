@@ -56,11 +56,11 @@ __install_macvim() {
 }
 
 __install_dein() {
-  local DEINDIR
-  DEINDIR="${HOME}/.cache/dein"
-  mkdir -p "$DEINDIR"
-  curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > "${DEINDIR}/installer.sh"
-  bash "${DEINDIR}/installer.sh" "$DEINDIR"
+  curl -fsSL -O https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
+  sh installer.sh "${HOME}/.cache/dein" --use-vim-config
+  rm installer.sh
+  rm "${HOME}/.vimrc"
+  mv "${HOME}/.vimrc.pre-dein-vim" "${HOME}/.vimrc"
   vim -c q
 }
 
