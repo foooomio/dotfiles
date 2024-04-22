@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -euo pipefail
 
 BASEDIR="$(cd "$(dirname "$0")";pwd)"
 BACKUPDIR="${HOME}/.backup"
@@ -42,6 +42,10 @@ __install_homebrew() {
   brew install $(< brewlist)
 }
 
+__install_mise() {
+  curl https://mise.run | sh
+}
+
 __install_macvim() {
   local dmg api url
   dmg="/var/tmp/MacVim.dmg"
@@ -65,14 +69,14 @@ __install_dein() {
 }
 
 case "${1-}" in
-  install)    __deploy_dotfiles  ;;
-  uninstall)  __revert_dotfiles  ;;
-  dein)       __install_dein     ;;
-  macvim)     __install_macvim   ;;
-  *brew)      __install_homebrew ;;
+  install)    __deploy_dotfiles   ;;
+  uninstall)  __revert_dotfiles   ;;
+  dein)       __install_dein      ;;
+  macvim)     __install_macvim    ;;
+  *brew)      __install_homebrew  ;;
+  mise)       __install_mise      ;;
   help|'')    echo "command: install|uninstall|dein|macvim|homebrew" && exit 0 ;;
   *)          echo "unknown option: $1" && exit 1 ;;
 esac
 
 echo "Operation completed."
-exit 0
